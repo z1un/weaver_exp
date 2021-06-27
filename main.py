@@ -74,7 +74,7 @@ def check(url):
         result('泛微OA V8前台Sql注入', url)
 
     # 泛微OA weaver.common.Ctrl 任意文件上传
-    print(now_time() + info() + '泛微OA weaver.common.Ctrl 任意文件上传漏洞')
+    print(now_time() + info() + '正在检测泛微OA weaver.common.Ctrl 任意文件上传漏洞')
     if Weaver_Common_Ctrl_Upload.GetShell(url) == 'ok':
         result('泛微OA weaver.common.Ctrl 任意文件上传', url)
 
