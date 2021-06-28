@@ -6,7 +6,7 @@ import time
 from pyfiglet import Figlet
 
 from poc import E_Bridge_Arbitrary_File_Read, E_Cology_WorkflowServiceXml_RCE, E_Cology_V8_Sql, \
-    Weaver_Common_Ctrl_Upload, Bsh_RCE
+    Weaver_Common_Ctrl_Upload, Bsh_RCE, WorkflowCenterTreeData_Sql
 
 BLUE = '\033[0;36m'
 RED = '\x1b[1;91m'
@@ -83,6 +83,11 @@ def check(url):
     print(now_time() + info() + '正在检测泛微OA Bsh RCE漏洞')
     if Bsh_RCE.Check(url) == 'ok':
         result('泛微OA Bsh RCE', url)
+
+    # 泛微OA WorkflowCenterTreeData接口SQL注入
+    print(now_time() + info() + '正在检测泛微OA WorkflowCenterTreeData接口SQL注入漏洞')
+    if WorkflowCenterTreeData_Sql.exploit(url) == 'ok':
+        result('泛微OA WorkflowCenterTreeData接口SQL注入', url)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 泛微OA Beanshell RCE漏洞
+# 泛微OA Bsh 远程代码执行漏洞 CNVD-2019-32204
 # Fofa:  app="泛微-协同办公OA"
 
 import requests
