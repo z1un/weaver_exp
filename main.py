@@ -5,7 +5,8 @@ import argparse
 import time
 from pyfiglet import Figlet
 
-from poc import E_Bridge_Arbitrary_File_Read, E_Cology_WorkflowServiceXml_RCE, E_Cology_V8_Sql,Weaver_Common_Ctrl_Upload
+from poc import E_Bridge_Arbitrary_File_Read, E_Cology_WorkflowServiceXml_RCE, E_Cology_V8_Sql, \
+    Weaver_Common_Ctrl_Upload, Bsh_RCE
 
 BLUE = '\033[0;36m'
 RED = '\x1b[1;91m'
@@ -78,6 +79,10 @@ def check(url):
     if Weaver_Common_Ctrl_Upload.GetShell(url) == 'ok':
         result('泛微OA weaver.common.Ctrl 任意文件上传', url)
 
+    # 泛微Bsh RCE
+    print(now_time() + info() + '正在检测泛微OA Bsh RCE漏洞')
+    if Bsh_RCE.Check(url) == 'ok':
+        result('泛微OA Bsh RCE', url)
 
 
 if __name__ == '__main__':

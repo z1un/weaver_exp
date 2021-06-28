@@ -10,6 +10,8 @@
 泛微OA WorkflowServiceXml RCE
 
 泛微OA weaver.common.Ctrl 任意文件上传
+
+泛微OA Bsh RCE
 ```
 
 先写了这些，也欢迎补充～
@@ -39,4 +41,8 @@ https://ailiqun.xyz/2021/05/02/%E6%B3%9B%E5%BE%AEOA-%E5%89%8D%E5%8F%B0GetShell%E
 http://wiki.peiqi.tech/
 
 https://www.o2oxy.cn/3561.html
+
+https://github.com/Henry4E36/weaverSQL
+
+
 

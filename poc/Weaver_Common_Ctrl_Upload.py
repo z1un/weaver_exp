@@ -87,6 +87,8 @@ def GetShell(urllist):
 def main():
     if (len(sys.argv) == 2):
         url = sys.argv[1]
+        if url[-1] != '/':
+            url += '/'
         GetShell(url)
     else:
         print("python3 {} http://xx.xx.xx.xx".format(sys.argv[0]))
