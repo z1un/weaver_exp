@@ -105,13 +105,13 @@ if __name__ == '__main__':
                     url = 'http://' + url
             check(url)
         # 扫描结果
-        print(now_time() + info() + '扫描已完成, 结果保存至 \'' + os.path.dirname(os.path.abspath(__file__)) + '/result.txt\'')
+        print(now_time() + info() + '扫描已完成, 若有漏洞将保存至 \'' + os.path.dirname(os.path.abspath(__file__)) + '/result.txt\'')
         f.close()
 
     elif args.url:
         check(args.url)
         # 扫描结果
-        print(now_time() + info() + '扫描已完成, 结果保存至 \'' + os.path.dirname(os.path.abspath(__file__)) + '/result.txt\'')
+        print(now_time() + info() + '扫描已完成, 若有漏洞将保存至 \'' + os.path.dirname(os.path.abspath(__file__)) + '/result.txt\'')
 
     else:
         print(Usage)

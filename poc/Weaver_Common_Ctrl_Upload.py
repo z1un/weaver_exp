@@ -79,7 +79,7 @@ def GetShell(urllist):
             print(now_time() + success() + '利用成功webshell地址为: ' + GetShellurl+'?cmd=')
             return 'ok'
         else:
-            print(now_time() + error() + '未找到webshell, 利用失败, 可换马重试')
+            print(now_time() + warning() + '未找到webshell, 利用失败, 可换马重试')
     except:
         print(now_time() + error() + '未知错误')
 
