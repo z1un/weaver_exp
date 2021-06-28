@@ -14,11 +14,18 @@
 泛微OA Bsh RCE
 
 泛微OA WorkflowCenterTreeData接口SQL注入(仅限oracle数据库) CNVD-2019-34241
+
+泛微OA E-Cology 数据库配置信息泄漏
 ```
+泛微OA V9 任意文件上传（未完成，测试ing）
 
 先写了这些，也欢迎补充～
 
 其中`/poc`下的利用脚本均可独立使用。
+
+```bash
+python3 poc.py url
+```
 
 ##### Usage:
 
@@ -42,5 +49,6 @@ https://www.o2oxy.cn/3561.html
 
 https://github.com/Henry4E36/weaverSQL
 
+https://github.com/NS-Sp4ce/Weaver-OA-E-cology-Database-Leak
 
 

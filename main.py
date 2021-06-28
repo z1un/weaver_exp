@@ -4,9 +4,11 @@ import os
 import argparse
 import time
 from pyfiglet import Figlet
+# from  multiprocessing import Pool
+
 
 from poc import E_Bridge_Arbitrary_File_Read, E_Cology_WorkflowServiceXml_RCE, E_Cology_V8_Sql, \
-    Weaver_Common_Ctrl_Upload, Bsh_RCE, WorkflowCenterTreeData_Sql
+    Weaver_Common_Ctrl_Upload, Bsh_RCE, WorkflowCenterTreeData_Sql, E_Cology_Database_Leak
 
 BLUE = '\033[0;36m'
 RED = '\x1b[1;91m'
@@ -89,6 +91,11 @@ def check(url):
     if WorkflowCenterTreeData_Sql.exploit(url) == 'ok':
         result('泛微OA WorkflowCenterTreeData接口SQL注入', url)
 
+    # 泛微OA e-cology 数据库配置信息泄漏
+    print(now_time() + info() + '正在检测泛微OA e-cology 数据库配置信息泄漏漏洞')
+    if E_Cology_Database_Leak.checkVulUrl(url) == 'ok':
+        result('泛微OA 数据库配置信息泄漏漏洞', url)
+
 
 if __name__ == '__main__':
     print(VIOLET + Figlet(font='slant').renderText('WeaverOAExp') + ENDC)
@@ -100,6 +107,7 @@ if __name__ == '__main__':
         os.path.basename(__file__))
     args = parser.parse_args()
     if args.file:
+        # pool = Pool(processes=10)
         f = open(args.file, 'r')
         urls = f.readlines()
         for url in urls:
@@ -108,10 +116,13 @@ if __name__ == '__main__':
                 url += '/'
                 if url[:4] != 'http':
                     url = 'http://' + url
+            # pool.apply_async(check, args=(url,))
             check(url)
+        f.close()
+        # pool.close()
+        # pool.join()
         # 扫描结果
         print(now_time() + info() + '扫描已完成, 若有漏洞将保存至 \'' + os.path.dirname(os.path.abspath(__file__)) + '/result.txt\'')
-        f.close()
 
     elif args.url:
         check(args.url)
